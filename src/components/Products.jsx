@@ -18,7 +18,7 @@ const Products = () => {
         const startIndex = (currentPageNumber - 1) * number;
         const endIndex = startIndex + number;
         return data.slice(startIndex, endIndex);
-    }, [currentPageNumber, number]);
+    }, [currentPageNumber, number,data]);
     useEffect(() => {
         setNumber(10);
         setCurrentPageNumber(1);

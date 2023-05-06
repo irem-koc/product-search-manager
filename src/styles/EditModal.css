@@ -45,9 +45,6 @@
     cursor: pointer;
 }
 
-.input-label {
-    margin-bottom: 20px;
-}
 
 .input-edit {
     width: 100%;
@@ -58,6 +55,8 @@
     border-radius: 10px;
     border: 1px solid #878787;
     margin-top: 5px;
+    
+    margin-bottom: 20px;
 }
 
 .edit-btn-section {

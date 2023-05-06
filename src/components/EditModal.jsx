@@ -20,18 +20,11 @@ const EditModal = ({ product }) => {
     }, [title, price, brand]);
 
     return editModalOpen ? (
-        <div id="myModal" className="modal">
+        <form onSubmit={handleSaveEdit} id="myModal" className="modal">
             <div className="modal-content">
-                {/* <span
-                    class="close"
-                    onClick={() => setEditModalOpen(!editModalOpen)}
-                >
-                    &times;
-                </span>
-                <br /><br /> */}
                 <div className="input-label">
-                    <h4>Title</h4>
-                    <input
+                    <h4>Title</h4>  
+                    <input required
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="input-edit"
@@ -40,7 +33,7 @@ const EditModal = ({ product }) => {
                 </div>
                 <div className="input-label">
                     <h4>Price</h4>
-                    <input
+                    <input required
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                         className="input-edit"
@@ -50,7 +43,7 @@ const EditModal = ({ product }) => {
                 </div>
                 <div className="input-label">
                     <h4>Brand</h4>
-                    <input
+                    <input required
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
                         className="input-edit"
@@ -64,12 +57,12 @@ const EditModal = ({ product }) => {
                     >
                         cancel
                     </button>
-                    <button className="edit-btn save" onClick={handleSaveEdit}>
+                    <button className="edit-btn save">
                         save
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     ) : (
         ""
     );

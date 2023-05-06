@@ -17,6 +17,7 @@ const EditModal = ({ product }) => {
         data.find((prod) =>
             prod.id === product.id ? prod.title=title : ""
         );
+        //eslint-disable-next-line
     }, [title, price, brand]);
 
     return editModalOpen ? (

@@ -22,6 +22,7 @@ const Products = () => {
     useEffect(() => {
         setNumber(10);
         setCurrentPageNumber(1);
+        //eslint-disable-next-line
     }, [window.location.href]);
 
     return (

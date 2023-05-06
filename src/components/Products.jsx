@@ -31,7 +31,7 @@ const Products = () => {
                 <div>
                     <input className="filter-input" type="text" />
                     <button
-                        className="add-btn"
+                        className="add-btn-products"
                         onClick={() => setAddModalOpen(true)}
                     >
                         + New

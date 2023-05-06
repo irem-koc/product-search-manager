@@ -23,7 +23,6 @@ const Pagination = () => {
                 <select
                     className="select-menu"
                     onChange={handleSelectChange}
-                    defaultValue={number}
                     name="cars"
                     id="cars"
                     value={number}

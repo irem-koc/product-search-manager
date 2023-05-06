@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./../styles/AddModal.css";
 import { Context } from "../context/Context";
+import { useEffect } from "react";
 const AddModal = () => {
-    const { data, addModalOpen, setAddModalOpen } = useContext(Context);
+    const { setData, data, addModalOpen, setAddModalOpen } =
+        useContext(Context);
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -12,11 +14,49 @@ const AddModal = () => {
     const [price, setPrice] = useState(0);
     const [rating, setRating] = useState(0);
     const [stock, setStock] = useState(0);
-    // const [thumbnail, setThumbnail] = useState(null);
-    // const [images, setImages] = useState(null);
-
-    const handleSaveAdd = () => {
-        console.log("added");
+    const [thumbnail, setThumbnail] = useState();
+    const [images, setImages] = useState([]);
+    useEffect(() => {
+        setTitle("");
+        setDescription("");
+        setBrand("");
+        setCategory("");
+        setDiscountPercentage(0);
+        setPrice(0);
+        setRating(0);
+        setStock(0);
+        setThumbnail();
+        setImages([]);
+    }, [addModalOpen]);
+    const handleSaveAdd = (e) => {
+        e.preventDefault();
+        const new_product = {
+            id: data.length+1,
+            title: title,
+            description: description,
+            brand: brand,
+            category: category,
+            discountPercentage: discountPercentage,
+            price: price,
+            rating: rating,
+            stock: stock,
+            thumbnail: thumbnail,
+            images: images,
+        };
+        setData([new_product,...data]);
+        setAddModalOpen(!addModalOpen)
+    };
+    const handleImageUpload = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            setThumbnail(URL.createObjectURL(e.target.files[0]));
+        }
+    };
+    const handleImagesUpload = (e) => {
+        let images = [];
+        for (let i = 0; i < e.target.files.length; i++) {
+            images.push(URL.createObjectURL(e.target.files[i]));
+        }
+        setImages(images);
     };
     return addModalOpen ? (
         <form onSubmit={handleSaveAdd} id="myAddModal" className="add-modal">
@@ -101,27 +141,27 @@ const AddModal = () => {
                         type="number"
                     />
                 </div>
-                {/* <div className="input-label">
+                <div className="input-label">
                     <h4>Thumbnail</h4>
                     <input
                         required
-                        value={thumbnail}
-                        onChange={(e) => setBrand(e.target.value)}
-                        className="input-add"
-                        type="file"
-                    />
-                </div>
-                <div className="input-label">
-                    <h4>Images</h4>
-                    <input multiple
-                        required
-                        value={images}
-                        // onChange={(e) => setBrand(e.target.value)}
+                        onChange={handleImageUpload}
                         className="input-add"
                         type="file"
                         accept="image/png, image/jpeg, image/jpg, image/gif "
                     />
-                </div> */}
+                </div>
+                <div className="input-label">
+                    <h4>Images</h4>
+                    <input
+                        multiple
+                        required
+                        onChange={handleImagesUpload}
+                        className="input-add"
+                        type="file"
+                        accept="image/png, image/jpeg, image/jpg, image/gif "
+                    />
+                </div>
                 <div className="add-btn-section">
                     <button
                         className="add-btn cancel"

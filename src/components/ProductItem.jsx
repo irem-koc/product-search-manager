@@ -6,12 +6,17 @@ const ProductItem = ({ product }) => {
         <div className="productItem">
             <div className="image-brand">
                 <div className="imagee">
-                    <img loading="lazy" src={product.thumbnail} alt={product.description} />
+                    <img
+                        loading="lazy"
+                        src={product.thumbnail}
+                        alt={product.description}
+                    />
                 </div>
                 <Link className="linkk" to={`/products/${product.id}`}>
                     {product.title}
                 </Link>
             </div>
+
             <div className="text">
                 {product.description.substr(0, 60) + "..."}
             </div>

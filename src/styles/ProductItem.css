@@ -1,0 +1,36 @@
+.productItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-brand {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.imagee {
+    margin-right: 30px;
+    display: flex;
+
+}
+
+.imagee>img {
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    margin: 10px 0;
+    object-fit: cover;
+}
+
+.linkk {
+    font-size: 18px;
+    color: #DEAA9A;
+}
+
+.text {
+    text-overflow: ellipsis;
+    color: grey;
+    font-size: 16px;
+}

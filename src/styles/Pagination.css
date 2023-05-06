@@ -1,0 +1,38 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.select-menu{
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 5px;
+    padding-right: 15px;
+    margin-right:10px;
+    border-width: 2px;
+}
+.prev-btn,
+.next-btn{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #f8673b;
+    font-weight: 700;
+    font-size: 18px;
+}
+.prev-btn{
+    padding: 7px 20px;
+    margin-right:10px;
+    cursor: pointer;
+}
+.next-btn{
+    padding: 7px 20px;
+    cursor: pointer;
+    
+}
+.disable{
+    border: 2px solid #b0b0b0;
+    cursor: default;
+    pointer-events: none;
+}

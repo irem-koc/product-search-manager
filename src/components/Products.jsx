@@ -3,9 +3,17 @@ import { Context } from "../context/Context";
 import "./../styles/Products.css";
 import ProductItem from "./ProductItem";
 import Pagination from "./Pagination";
+import AddModal from "./AddModal";
 
 const Products = () => {
-    const { data, number, setNumber, currentPageNumber,setCurrentPageNumber } = useContext(Context);
+    const {
+        data,
+        number,
+        setNumber,
+        currentPageNumber,
+        setCurrentPageNumber,
+        setAddModalOpen,
+    } = useContext(Context);
     const currentTableData = useMemo(() => {
         const startIndex = (currentPageNumber - 1) * number;
         const endIndex = startIndex + number;
@@ -14,17 +22,20 @@ const Products = () => {
     useEffect(() => {
         setNumber(10);
         setCurrentPageNumber(1);
-    }, [window.location.href])
-    
-    
-    
+    }, [window.location.href]);
+
     return (
         <div className="products-filters">
             <div className="filters">
                 <h2>Products</h2>
                 <div>
                     <input className="filter-input" type="text" />
-                    <button className="add-btn">+ New</button>
+                    <button
+                        className="add-btn"
+                        onClick={() => setAddModalOpen(true)}
+                    >
+                        + New
+                    </button>
                 </div>
             </div>
             <div className="products">
@@ -36,6 +47,7 @@ const Products = () => {
                 ))}
             </div>
             <Pagination />
+            <AddModal />
         </div>
     );
 };
